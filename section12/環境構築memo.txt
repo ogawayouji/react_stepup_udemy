@@ -1,0 +1,4 @@
+yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion # chakra ui
+.env
+yarn add react-router-dom @types/react-router-dom
+yarn add @chakra-ui/icon

@@ -4,6 +4,7 @@ import { UserCard } from '../organisms/user/UserCard';
 import { useAllUsers } from '../../hooks/useAllUsers';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
 import { useSelectUser } from '../../hooks/useSelectUser';
+import { useLoginUser } from '../../hooks/useLoginUser';
 
 export const UserManagement: VFC = memo(() => {
   const { getUsers, loading, users } = useAllUsers();
@@ -14,6 +15,8 @@ export const UserManagement: VFC = memo(() => {
     // onOpen();
     onSelectUser({ id, users, onOpen });
   }, [users, onSelectUser, onOpen]);
+
+  const { loginUser } = useLoginUser();
   return (
     <>
       {loading ? (
@@ -79,7 +82,7 @@ export const UserManagement: VFC = memo(() => {
           </ModalBody>
         </ModalContent>
       </Modal> */}
-      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal user={selectedUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose} />
     </>
     // <p>ユーザー管理ページです</p>
   )
